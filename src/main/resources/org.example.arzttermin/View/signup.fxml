@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -71,10 +70,6 @@
             <RadioButton fx:id="femaleRadioButton" layoutX="251.0" layoutY="357.0" mnemonicParsing="false" text="Weiblich" textFill="WHITE" />
             <RadioButton fx:id="otherRadioButton" layoutX="328.0" layoutY="357.0" mnemonicParsing="false" text="Divers" textFill="WHITE" />
             <DatePicker fx:id="dobDatePicker" layoutX="167.0" layoutY="318.0" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #5E9F5A;" />
-            <CheckBox fx:id="termsCheckBox" layoutX="16.0" layoutY="450.0" mnemonicParsing="false" text="Ich stimme den AGB zu" textFill="WHITE">
-            <font>
-               <Font size="13.0" />
-            </font></CheckBox>
             <Label fx:id="errorLabel" layoutX="17.0" layoutY="496.0" text="Error" textFill="RED" visible="false" />
             <Button fx:id="signUpButton" layoutX="122.0" layoutY="510.0" mnemonicParsing="false" onAction="#signUpButtonClicked" prefHeight="40.0" prefWidth="280.0" style="-fx-background-color: #5E9F5A #5E9F5A; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Registrieren" textFill="WHITE">
                 <font>
