@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doctorappointmentsystem.ViewModel.SignUpController">
+<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.arzttermin.ViewModel.SignUpController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="false">
             <image>
@@ -60,12 +60,12 @@
                     <Font name="System Bold" size="12.0" />
                 </font>
             </Label>
-            <TextField fx:id="firstNameTextField" layoutX="167.0" layoutY="99.0" prefHeight="25.0" prefWidth="278.0" promptText="Vorname" style="-fx-background-color: black;" />
-            <TextField fx:id="lastNameTextField" layoutX="167.0" layoutY="136.0" prefHeight="25.0" prefWidth="278.0" promptText="Nachname" style="-fx-background-color: black;" />
-            <TextField fx:id="usernameTextField" layoutX="167.0" layoutY="171.0" prefHeight="25.0" prefWidth="278.0" promptText="Benutzername" style="-fx-background-color: black;" />
-            <TextField fx:id="emailTextField" layoutX="167.0" layoutY="281.0" prefHeight="25.0" prefWidth="278.0" promptText="Email" style="-fx-background-color: black;" />
-            <PasswordField fx:id="passwordTextField" layoutX="167.0" layoutY="208.0" prefHeight="25.0" prefWidth="278.0" promptText="Password" style="-fx-background-color: black;" />
-            <PasswordField fx:id="confirmPasswordTextField" layoutX="167.0" layoutY="247.0" prefHeight="25.0" prefWidth="278.0" promptText="Passwort bestätigen" style="-fx-background-color: black;" />
+            <TextField fx:id="firstNameTextField" layoutX="167.0" layoutY="99.0" prefHeight="25.0" prefWidth="278.0" promptText="Vorname" style="-fx-background-color: #ffffff;" />
+            <TextField fx:id="lastNameTextField" layoutX="167.0" layoutY="136.0" prefHeight="25.0" prefWidth="278.0" promptText="Nachname" style="-fx-background-color: #ffffff;" />
+            <TextField fx:id="usernameTextField" layoutX="167.0" layoutY="171.0" prefHeight="25.0" prefWidth="278.0" promptText="Benutzername" style="-fx-background-color: #ffffff;" />
+            <TextField fx:id="emailTextField" layoutX="167.0" layoutY="281.0" prefHeight="25.0" prefWidth="278.0" promptText="Email" style="-fx-background-color: #ffffff;" />
+            <PasswordField fx:id="passwordTextField" layoutX="167.0" layoutY="208.0" prefHeight="25.0" prefWidth="278.0" promptText="Password" style="-fx-background-color: #ffffff;" />
+            <PasswordField fx:id="confirmPasswordTextField" layoutX="167.0" layoutY="247.0" prefHeight="25.0" prefWidth="278.0" promptText="Passwort bestätigen" style="-fx-background-color: #ffffff;" />
             <RadioButton fx:id="maleRadioButton" layoutX="172.0" layoutY="357.0" mnemonicParsing="false" text="Männlich" textFill="WHITE" />
             <RadioButton fx:id="femaleRadioButton" layoutX="251.0" layoutY="357.0" mnemonicParsing="false" text="Weiblich" textFill="WHITE" />
             <RadioButton fx:id="otherRadioButton" layoutX="328.0" layoutY="357.0" mnemonicParsing="false" text="Divers" textFill="WHITE" />
@@ -81,16 +81,16 @@
                     <Font name="System Bold" size="12.0" />
                 </font>
             </Button>
-         <Label layoutX="17.0" layoutY="321.0" prefHeight="20.0" prefWidth="98.0" text="Geburtsdatum" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font>
-         </Label>
-         <Label layoutX="17.0" layoutY="356.0" prefHeight="20.0" prefWidth="98.0" text="Geschlecht" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font>
-         </Label>
+            <Label layoutX="17.0" layoutY="321.0" prefHeight="20.0" prefWidth="98.0" text="Geburtsdatum" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="12.0" />
+                </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="356.0" prefHeight="20.0" prefWidth="98.0" text="Geschlecht" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="12.0" />
+                </font>
+            </Label>
         </Pane>
     </children>
 </AnchorPane>
