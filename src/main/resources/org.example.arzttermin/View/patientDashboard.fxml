@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doctorappointmentsystem.ViewModel.PatientDashboardController">
+<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.arzttermin.ViewModel.PatientDashboardController">
     <children>
         <Pane layoutX="6.0" layoutY="45.0" prefHeight="346.0" prefWidth="316.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-background-radius: 10px; -fx-border-radius: 5px;">
          <children>

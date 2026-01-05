@@ -183,8 +183,4 @@ public class MySQL implements PersistanceHandler {
         }
     }
 
-
-
-
-
 }
