@@ -1,4 +1,4 @@
-package Model;
+package org.example.arzttermin.Model;
 
 import java.sql.Date;
 

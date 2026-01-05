@@ -1,7 +1,7 @@
-package Model;
+package org.example.arzttermin.Model;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public abstract class User {
     private int id;
@@ -13,9 +13,18 @@ public abstract class User {
     private Date dob;
     private String email;
     private String gender;
+
     private boolean isActive;
-    private String city;
-    private ArrayList<AvailabilityCalendar> availability;
+
+
+    private ArrayList<AvailabilityCalendar> availablility;
+
+
+    public User() {
+    }
+
+
+
 
     public User(int id, String firstName, String lastName, String username, String password, String role, Date dob, String email, String gender, boolean isActive) {
         this.id = id;
@@ -27,9 +36,12 @@ public abstract class User {
         this.dob = dob;
         this.email = email;
         this.gender = gender;
+
         this.isActive = isActive;
-        this.availability = null;
+        this.availablility = null;
+
     }
+
 
     public int getId() {
         return id;
@@ -103,6 +115,8 @@ public abstract class User {
         this.gender = gender;
     }
 
+
+
     public boolean isActive() {
         return isActive;
     }
@@ -111,23 +125,35 @@ public abstract class User {
         isActive = active;
     }
 
-    public String getCity() {
-        return city;
-    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+
 
     public ArrayList<AvailabilityCalendar> getAvailability() {
-        return availability;
+        return availablility;
     }
 
     public void setAvailability(ArrayList<AvailabilityCalendar> availability) {
-        this.availability = availability;
+        this.availablility = availability;
     }
 
     public String getFullName(){
         return firstName + ' ' + lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", dob=" + dob +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", isActive=" + isActive +
+                ", availablility=" + availablility +
+                '}';
     }
 }
