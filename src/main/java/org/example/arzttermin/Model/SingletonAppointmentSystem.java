@@ -27,10 +27,7 @@ public class SingletonAppointmentSystem {
         return instance;
     }
 
-    public void reloadAppointmentsFromDb() {
-        appointments.clear();
-        db.loadAppointments(users, appointments);
-    }
+
 
 
     public ArrayList<User> getUsers(String role) {
@@ -48,7 +45,7 @@ public class SingletonAppointmentSystem {
         System.out.println("Loading Data");
         db.loadPatients(users);
         db.loadDoctors(users);
-        db.loadAppointments(users, appointments);
+
     }
 
 
@@ -155,59 +152,6 @@ public class SingletonAppointmentSystem {
         System.out.println("Doctors for " + specialization + ": " + doctors);
         return doctors;
     }
-
-    public ArrayList<String> getDates(String doc) {
-        ArrayList<String> dates = new ArrayList<>();
-        User doctor = null;
-        for (User u : users) {
-            if ((u.getFirstName() + ' ' + u.getLastName()).equals(doc)) {
-                doctor = u;
-                break;
-            }
-        }
-
-        for (AvailabilityCalendar a : doctor.getAvailablility()) {
-            dates.add(a.getDate());
-        }
-
-        return dates;
-    }
-
-    public ArrayList<String> getTime(String doc, String date) {
-        reloadAppointmentsFromDb();
-
-        User doctor = null;
-        for (User u : users) {
-            if ((u.getFirstName() + " " + u.getLastName()).equals(doc)) {
-                doctor = u;
-                break;
-            }
-        }
-
-        if (doctor == null) {
-            return new ArrayList<>();
-        }
-
-
-        ArrayList<String> availableTimes = new ArrayList<>();
-        for (AvailabilityCalendar a : doctor.getAvailablility()) {
-            if (a.getDate().equals(date)) {
-                availableTimes.addAll(a.getAvailablityTimes());
-                break;
-            }
-        }
-
-
-        for (Appointment ap : appointments) {
-            if (ap.getDoctor().equals(doctor) && ap.getDate().equals(date)) {
-                availableTimes.remove(ap.getTime());
-            }
-        }
-
-        return availableTimes;
-    }
-
-
 
 
 }

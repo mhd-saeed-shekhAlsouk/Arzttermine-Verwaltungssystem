@@ -63,7 +63,7 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(AppointmentSystem.class.getResource("View/patientDashboard.fxml"));
             Parent summaryRoot = loader.load();
             PatientDashboardController controller = loader.getController();
-            controller.loadDetails(SingletonAppointmentSystem.getInstance().getLoggedInUser(), null);
+            //controller.loadDetails(SingletonAppointmentSystem.getInstance().getLoggedInUser(), null);
             Stage stage = (Stage) rootPane.getScene().getWindow();
             Scene scene = new Scene(summaryRoot, 1000, 600);
             stage.setScene(scene);
