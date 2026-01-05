@@ -98,7 +98,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.example.arzttermin/org.example.arzttermin.Main
+                                org.example.arzttermin/org.example.arzttermin.AppointmentSystem
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
