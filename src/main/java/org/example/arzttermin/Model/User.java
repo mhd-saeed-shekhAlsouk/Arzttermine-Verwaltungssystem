@@ -128,12 +128,12 @@ public abstract class User {
 
 
 
-    public ArrayList<AvailabilityCalendar> getAvailability() {
+    public ArrayList<AvailabilityCalendar> getAvailablility() {
         return availablility;
     }
 
-    public void setAvailability(ArrayList<AvailabilityCalendar> availability) {
-        this.availablility = availability;
+    public void setAvailablility(ArrayList<AvailabilityCalendar> availablility) {
+        this.availablility = availablility;
     }
 
     public String getFullName(){
