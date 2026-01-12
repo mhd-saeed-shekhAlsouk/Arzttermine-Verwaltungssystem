@@ -93,7 +93,7 @@ public class SignUpController {
     @FXML
     private void loginButtonClicked() {
         try {
-            FXMLLoader loader = new FXMLLoader(AppointmentSystem.class.getResource("View/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(AppointmentSystem.class.getResource("/org.example.arzttermin/View/login.fxml"));
             Parent summaryRoot = loader.load();
 
             Stage stage = (Stage) rootPane.getScene().getWindow();

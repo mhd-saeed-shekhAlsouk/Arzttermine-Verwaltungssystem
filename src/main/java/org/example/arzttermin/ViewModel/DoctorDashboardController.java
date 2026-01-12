@@ -251,10 +251,10 @@ public class DoctorDashboardController {
             if (response == ButtonType.OK) {
                 String result = SingletonAppointmentSystem.getInstance().cancelAppointment(appointment);
 
-                if (result.equals("Success")) {
+                if (result.equals("Erfolgreich")) {
                     // Show success message
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Success");
+                    alert.setTitle("Erfolgreich");
                     alert.setHeaderText("Appointment Cancelled");
                     alert.setContentText("The appointment has been successfully cancelled!");
                     alert.showAndWait();
@@ -278,7 +278,7 @@ public class DoctorDashboardController {
     @FXML
     private void handleLogoutClicked() {
         try {
-            FXMLLoader loader = new FXMLLoader(AppointmentSystem.class.getResource("View/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(AppointmentSystem.class.getResource("/org.example.arzttermin/View/login.fxml"));
             Parent summaryRoot = loader.load();
             Stage stage = (Stage) rootPane.getScene().getWindow();
             Scene scene = new Scene(summaryRoot, 1000 , 600);

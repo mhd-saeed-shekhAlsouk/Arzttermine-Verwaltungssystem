@@ -13,7 +13,7 @@ public class AppointmentSystem extends Application {
     public void start(Stage stage) throws IOException {
         SingletonAppointmentSystem.getInstance();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(AppointmentSystem.class.getResource ("view/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AppointmentSystem.class.getResource("/org.example.arzttermin/View/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
         stage.setTitle("PraxPlan");
         stage.setScene(scene);

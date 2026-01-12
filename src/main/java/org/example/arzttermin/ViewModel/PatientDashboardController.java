@@ -588,7 +588,7 @@ public class PatientDashboardController {
     @FXML
     private void handleLogoutClicked(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(AppointmentSystem.class.getResource("View/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(AppointmentSystem.class.getResource("/org.example.arzttermin/View/login.fxml"));
             Parent summaryRoot = loader.load();
             Stage stage = (Stage) rootPane.getScene().getWindow();
             Scene scene = new Scene(summaryRoot, 1000 , 600);
