@@ -243,36 +243,36 @@ public class DoctorDashboardController {
 
     private void cancelAppointment(Appointment appointment) {
         Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmAlert.setTitle("Confirm Cancellation");
-        confirmAlert.setHeaderText("Cancel Appointment");
-        confirmAlert.setContentText("Are you sure you want to cancel this appointment?");
+        confirmAlert.setTitle("Termin stornieren");
+        confirmAlert.setHeaderText("Termin stornieren");
+        confirmAlert.setContentText("Möchten Sie diesen Termin wirklich stornieren?");
 
         confirmAlert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 String result = SingletonAppointmentSystem.getInstance().cancelAppointment(appointment);
 
                 if (result.equals("Erfolgreich")) {
-                    // Show success message
+                    // Erfolgreich-Alert
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Erfolgreich");
-                    alert.setHeaderText("Appointment Cancelled");
-                    alert.setContentText("The appointment has been successfully cancelled!");
+                    alert.setHeaderText("Termin storniert");
+                    alert.setContentText("Der Termin wurde erfolgreich storniert!");
                     alert.showAndWait();
 
-                    // Refresh the appointments list
+                    // Termine neu laden
                     loadAppointmentsList();
                 } else {
+                    // Fehler-Alert
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Failed to Cancel Appointment");
+                    alert.setTitle("Fehler");
+                    alert.setHeaderText("Stornierung fehlgeschlagen");
                     alert.setContentText(result);
                     alert.showAndWait();
                 }
             }
         });
-
-
     }
+
 
 
     @FXML
