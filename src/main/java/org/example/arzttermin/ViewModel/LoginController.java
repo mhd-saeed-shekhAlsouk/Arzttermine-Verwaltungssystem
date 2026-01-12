@@ -1,7 +1,5 @@
 package org.example.arzttermin.ViewModel;
 
-import com.example.doctorappointmentsystem.AppointmentSystem;
-import com.example.doctorappointmentsystem.Model.SingletonAppointmentSystem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.arzttermin.AppointmentSystem;
+import org.example.arzttermin.Model.SingletonAppointmentSystem;
 
 import java.io.IOException;
 
@@ -30,7 +30,7 @@ public class LoginController {
 
     @FXML
     private void loginButtonClicked() {
-        String response = SingletonAppointSignUpControllermentSystem.getInstance().login(usernameField.getText(), passwordField.getText());
+        String response = SingletonAppointmentSystem.getInstance().login(usernameField.getText(), passwordField.getText());
         errorLabel.setVisible(false);
         errorLabel.setText(response);
         if (response.equals("Patient")) {
