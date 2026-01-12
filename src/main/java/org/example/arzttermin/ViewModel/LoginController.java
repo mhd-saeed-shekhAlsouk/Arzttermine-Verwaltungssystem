@@ -1,8 +1,5 @@
 package org.example.arzttermin.ViewModel;
 
-import o
-rg.example.arzttermin.AppointmentSystem;
-import org.example.arzttermin.Model.SingletonAppointmentSystem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.arzttermin.AppointmentSystem;
+import org.example.arzttermin.Model.SingletonAppointmentSystem;
 
 import java.io.IOException;
 
