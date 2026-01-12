@@ -62,8 +62,8 @@ public class SignUpController {
     @FXML
     private void signUpButtonClicked() {
         errorLabel.setVisible(true);
-        String gender = (maleRadioButton.isSelected() ? "Male" :
-                femaleRadioButton.isSelected() ? "Female" : "Other");
+        String gender = (maleRadioButton.isSelected() ? "Männlich" :
+                femaleRadioButton.isSelected() ? "Weiblich" : "Divers");
 
         // Registrierung ohne termsAndConditions und MedicalHistory
         String response = SingletonAppointmentSystem.getInstance().registerUser(

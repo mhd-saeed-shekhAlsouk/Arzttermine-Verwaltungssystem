@@ -286,9 +286,9 @@ public class PatientDashboardController {
     private void bookAppointmentFromDashboard() {
         if (doctorComboBox.getValue() == null || dateComboBox.getValue() == null || timeComboBox.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("Missing Information");
-            alert.setContentText("Please select doctor, date, and time.");
+            alert.setTitle("Warnung");
+            alert.setHeaderText("Fehlende Informationen");
+            alert.setContentText("Bitte wählen Sie einen Arzt, ein Datum und eine Uhrzeit aus.");
             alert.showAndWait();
             return;
         }
@@ -301,32 +301,33 @@ public class PatientDashboardController {
 
         if (response.equals("Success")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Appointment Booked");
-            alert.setContentText("Your appointment has been successfully booked!");
+            alert.setTitle("Erfolg");
+            alert.setHeaderText("Termin gebucht");
+            alert.setContentText("Ihr Termin wurde erfolgreich gebucht!");
             alert.showAndWait();
 
-            // Clear form
+            // Formular zurücksetzen
             specializationComboBox.setValue(null);
             doctorComboBox.setItems(FXCollections.observableArrayList());
             dateComboBox.setItems(FXCollections.observableArrayList());
             timeComboBox.setItems(FXCollections.observableArrayList());
 
-            // Clear doctor profile panel
+            // Arztprofil-Bereich leeren
             if (doctorProfilePane != null) {
                 doctorProfilePane.getChildren().clear();
             }
 
-            // Refresh appointments list
+            // Terminliste aktualisieren
             loadAppointmentsList();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Booking Failed");
+            alert.setTitle("Fehler");
+            alert.setHeaderText("Buchung fehlgeschlagen");
             alert.setContentText(response);
             alert.showAndWait();
         }
     }
+
 
 
     private void showDoctorProfileInPanel(User doctor) {
@@ -372,8 +373,8 @@ public class PatientDashboardController {
 
         // Specialization (based on index)
         int doctorIndex = SingletonAppointmentSystem.getInstance().getUsers("Doctor").indexOf(doctor);
-        String specializ = doctorIndex == 0 ? "General Physician" :
-                doctorIndex == 1 ? "Cardiologist" : "Neurologist";
+        String specializ = doctorIndex == 0 ? "Allgemeinmediziner" :
+                doctorIndex == 1 ? "Kardiologe" : "Neurologe";
         Label specializationLabel = new Label("Fachrichtung: " + specializ);
         specializationLabel.setLayoutX(10.0);
         specializationLabel.setLayoutY(45.0);

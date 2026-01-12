@@ -125,14 +125,9 @@ public class SingletonAppointmentSystem {
 
     public ArrayList<String> getSpecializations() {
         ArrayList<String> specializations = new ArrayList<>();
-        specializations.add("General Physician");
-        specializations.add("Cardiologist");
-        specializations.add("Neurologist");
-        specializations.add("Dermatologist");
-        specializations.add("Pediatrician");
-        specializations.add("Orthopedist");
-        specializations.add("Gynecologist");
-        specializations.add("Psychiatrist");
+        specializations.add("Allgemeinmediziner");
+        specializations.add("Kardiologe");
+        specializations.add("Neurologe");
         return specializations;
     }
 
@@ -142,9 +137,9 @@ public class SingletonAppointmentSystem {
         for (User u : users) {
             if (u.getRole().equals("Doctor")) {
                 // Assign specializations based on doctor index
-                String doctorSpecialization = doctorIndex == 0 ? "General Physician" :
-                        doctorIndex == 1 ? "Cardiologist" :
-                                doctorIndex == 2 ? "Neurologist" : "General Physician";
+                String doctorSpecialization = doctorIndex == 0 ? "Allgemeinmediziner" :
+                        doctorIndex == 1 ? "Kardiologe" :
+                                doctorIndex == 2 ? "Neurologe" : "Allgemeinmediziner";
 
                 if (doctorSpecialization.equals(specialization)) {
                     doctors.add(u.getFirstName() + ' ' + u.getLastName());

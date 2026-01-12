@@ -118,7 +118,7 @@
             
                     <Pane layoutX="524.0" layoutY="401.0" prefHeight="190.0" prefWidth="468.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-background-radius: 10px; -fx-border-radius: 5;">
             <children>
-                <Label layoutX="10.0" layoutY="10.0" text="Meine Termine" textFill="#5e9f5a">
+                <Label layoutX="10.0" layoutY="10.0" text="Meine Ärzte" textFill="#5e9f5a">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>

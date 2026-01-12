@@ -17,7 +17,7 @@
         <Pane layoutX="10.0" layoutY="60.0" prefHeight="520.0" prefWidth="271.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
 
             <children>
-                <Label layoutX="10" layoutY="10" text="Arztprofil" textFill="WHITE">
+                <Label layoutX="10" layoutY="10" text="Arztprofil" textFill="#5e9f5a">
                     <font><Font name="System Bold" size="16" /></font>
                 </Label>
 
@@ -50,7 +50,7 @@
         <Pane layoutX="607.0" layoutY="60.0" prefHeight="520.0" prefWidth="383" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
 
             <children>
-                <Label layoutX="10" layoutY="10" text="Termine" textFill="WHITE">
+                <Label layoutX="10" layoutY="10" text="Termine" textFill="#5e9f5a">
                     <font><Font name="System Bold" size="16" /></font>
                 </Label>
 
