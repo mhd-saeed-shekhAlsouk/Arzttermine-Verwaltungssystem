@@ -27,7 +27,10 @@ public class SingletonAppointmentSystem {
         return instance;
     }
 
-
+    public void reloadAppointmentsFromDb() {
+        appointments.clear();
+        db.loadAppointments(users, appointments);
+    }
 
 
     public ArrayList<User> getUsers(String role) {
@@ -45,7 +48,7 @@ public class SingletonAppointmentSystem {
         System.out.println("Loading Data");
         db.loadPatients(users);
         db.loadDoctors(users);
-
+        db.loadAppointments(users, appointments);
     }
 
 
@@ -153,6 +156,120 @@ public class SingletonAppointmentSystem {
         return doctors;
     }
 
+    public ArrayList<String> getDates(String doc) {
+        ArrayList<String> dates = new ArrayList<>();
+        User doctor = null;
+        for (User u : users) {
+            if ((u.getFirstName() + ' ' + u.getLastName()).equals(doc)) {
+                doctor = u;
+                break;
+            }
+        }
+
+        for (AvailabilityCalendar a : doctor.getAvailablility()) {
+            dates.add(a.getDate());
+        }
+
+        return dates;
+    }
+
+    public ArrayList<String> getTime(String doc, String date) {
+        reloadAppointmentsFromDb();
+
+        User doctor = null;
+        for (User u : users) {
+            if ((u.getFirstName() + " " + u.getLastName()).equals(doc)) {
+                doctor = u;
+                break;
+            }
+        }
+
+        if (doctor == null) {
+            return new ArrayList<>();
+        }
+
+
+        ArrayList<String> availableTimes = new ArrayList<>();
+        for (AvailabilityCalendar a : doctor.getAvailablility()) {
+            if (a.getDate().equals(date)) {
+                availableTimes.addAll(a.getAvailablityTimes());
+                break;
+            }
+        }
+
+
+        for (Appointment ap : appointments) {
+            if (ap.getDoctor().equals(doctor) && ap.getDate().equals(date)) {
+                availableTimes.remove(ap.getTime());
+            }
+        }
+
+        return availableTimes;
+    }
+
+
+    public String bookAppointment(String doctor, String date, String time) {
+
+        if (doctor == null || date == null || time == null) {
+            return "Error: Select All the Options";
+        }
+
+        // Finding Doctor
+        User doc = null;
+        for (User u : users) {
+            if ((u.getFirstName() + ' ' + u.getLastName()).equals(doctor)) {
+                doc = u;
+                break;
+            }
+        }
+
+        // Removing Slots of Availability for Dentist
+        for (AvailabilityCalendar a : doc.getAvailablility()) {
+            if (a.getDate().equals(date)) {
+                String tim = null;
+                for (String t : a.getAvailablityTimes()) {
+                    if (t.equals(time)) {
+                        tim = t;
+                        break;
+                    }
+                }
+                a.getAvailablityTimes().remove(tim);
+                break;
+            }
+        }
+
+        int appId = appointments.size() > 0 ? appointments.get(appointments.size() - 1).getId() + 1 : 1;
+        Appointment app = new Appointment(appId, date, LoggedInUser, doc, time);
+        appointments.add(app);
+        db.addAppointment(app);
+
+
+        return "Success";
+    }
+
+    public ArrayList<Appointment> getAppointments() {
+        ArrayList<Appointment> apps = new ArrayList<>();
+        for (Appointment a : appointments) {
+            if (a.getPatient().equals(LoggedInUser) || a.getDoctor().equals(LoggedInUser)) {
+                apps.add(a);
+            }
+        }
+        return apps;
+
+    }
+
+
+    public String cancelAppointment(Appointment app) {
+        if (app == null) {
+            return "Error: No appointment selected";
+        }
+
+        appointments.remove(app);
+
+        db.deleteAppointment(app);
+
+
+        return "Erfolgreich";
+    }
 
 }
-
