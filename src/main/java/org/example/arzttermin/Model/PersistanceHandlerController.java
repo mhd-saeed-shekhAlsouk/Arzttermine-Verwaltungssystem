@@ -33,5 +33,8 @@ public class PersistanceHandlerController {
     public void addDoctor(Doctor doctor){ db.addDoctor(doctor); }
     public void updatePatient(User patient) { db.updatePatient(patient); }
     public void updateDoctor(User doctor){ db.updateDoctor(doctor); }
+    public void addAppointment(Appointment appointment){db.addAppointment(appointment);}
+    public void loadAppointments(ArrayList<User> users, ArrayList<Appointment> appointments){db.loadAppointments(users,appointments);}
+    public void deleteAppointment(Appointment appointment){db.deleteAppointment(appointment);}
 
 }

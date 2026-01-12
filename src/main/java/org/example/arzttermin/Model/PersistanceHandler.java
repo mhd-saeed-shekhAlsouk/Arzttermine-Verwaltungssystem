@@ -7,6 +7,10 @@ public interface PersistanceHandler {
 
     void loadDoctors(ArrayList<User> users);
 
+    void loadAppointments(ArrayList<User> users, ArrayList<Appointment> appointments);
+
+    void addAppointment(Appointment appointment);
+
     void addPatient(Patient patient);
 
     void addDoctor(Doctor doctor);
@@ -14,4 +18,6 @@ public interface PersistanceHandler {
     void updatePatient(User patient);
 
     void updateDoctor(User doctor);
+
+    void deleteAppointment(Appointment appointment);
 }
