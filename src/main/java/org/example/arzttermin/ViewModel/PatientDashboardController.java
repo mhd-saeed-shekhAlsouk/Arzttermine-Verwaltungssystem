@@ -209,7 +209,8 @@ public class PatientDashboardController {
             doctorName.setTextFill(Color.web("#5e9f5a"));
             doctorName.setFont(new Font("System Bold", 14.0));
 
-            Label appointmentInfo = new Label(app.getDate() );
+            Label appointmentInfo = new Label("Datum: " + app.getDate() + " | Uhrzeit: " + app.getTime());
+
             appointmentInfo.setLayoutX(10.0);
             appointmentInfo.setLayoutY(25.0);
             appointmentInfo.setTextFill(Color.web("#ffffff"));
