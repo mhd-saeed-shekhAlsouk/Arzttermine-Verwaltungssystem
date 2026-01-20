@@ -54,6 +54,12 @@ public class DoctorDashboardController {
     private User doctor;
     private User selectedPatient;
 
+    @FXML
+    private TextField nameFilterField;
+
+    @FXML
+    private DatePicker dateFilterPicker;
+
     public void loadDetails(User doctorUser, AnchorPane pane) {
         doctor = doctorUser;
         // rootPane = pane;
@@ -286,6 +292,112 @@ public class DoctorDashboardController {
             stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void initialize() {
+        // Filter live beim Tippen und Datum auswählen
+        nameFilterField.textProperty().addListener((obs, oldValue, newValue) -> filterAppointments());
+        dateFilterPicker.valueProperty().addListener((obs, oldValue, newValue) -> filterAppointments());
+
+        // Beim Start alle Termine anzeigen
+        filterAppointments();
+    }
+
+    private void filterAppointments() {
+        if (appointmentsPane == null) return;
+
+        appointmentsPane.getChildren().clear(); // Pane zuerst leeren
+
+        List<Appointment> allAppointments = SingletonAppointmentSystem.getInstance().getAppointments();
+
+        String nameFilter = nameFilterField.getText() != null ? nameFilterField.getText().trim().toLowerCase() : "";
+        java.time.LocalDate dateFilter = dateFilterPicker.getValue();
+        java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("d-MM-yyyy");
+
+        List<Appointment> filteredAppointments = allAppointments.stream()
+                .filter(app -> {
+                    // Name filtern
+                    boolean matchesName = nameFilter.isEmpty() ||
+                            app.getPatient().getFirstName().toLowerCase().contains(nameFilter) ||
+                            app.getPatient().getLastName().toLowerCase().contains(nameFilter);
+
+                    // Datum filtern
+                    boolean matchesDate = true; // Standard: alles anzeigen
+                    if (dateFilter != null) {
+                        try {
+                            // String aus Appointment in LocalDate umwandeln
+                            java.time.LocalDate appointmentDate = java.time.LocalDate.parse(app.getDate(), formatter);
+                            matchesDate = appointmentDate.equals(dateFilter);
+                        } catch (Exception e) {
+                            matchesDate = false; // falls das Datum falsch formatiert ist
+                        }
+                    }
+
+                    return matchesName && matchesDate;
+                })
+                .toList();
+
+        // Keine Termine gefunden
+        if (filteredAppointments.isEmpty()) {
+            Label noAppointmentsLabel = new Label("Keine Termine gefunden");
+            noAppointmentsLabel.setLayoutX(10.0);
+            noAppointmentsLabel.setLayoutY(20.0);
+            noAppointmentsLabel.setFont(new Font("System", 12.0));
+            noAppointmentsLabel.setTextFill(Color.web("#ffffff"));
+            appointmentsPane.getChildren().add(noAppointmentsLabel);
+            return;
+        }
+
+        // Termine anzeigen
+        for (int i = 0; i < filteredAppointments.size(); i++) {
+            Appointment app = filteredAppointments.get(i);
+
+            AnchorPane appointmentPane = new AnchorPane();
+            appointmentPane.setLayoutX(5.0);
+            appointmentPane.setLayoutY(5.0 + (i * 65));
+            appointmentPane.setPrefHeight(60.0);
+            appointmentPane.setPrefWidth(340.0);
+            appointmentPane.setStyle("-fx-background-color: #232323; -fx-border-color: #5e9f5a; -fx-border-radius: 5; -fx-background-radius: 5;");
+
+            // Patient Name
+            Label patientNameLabel = new Label("Patient: " + app.getPatient().getFirstName() + " " + app.getPatient().getLastName());
+            patientNameLabel.setLayoutX(10.0);
+            patientNameLabel.setLayoutY(5.0);
+            patientNameLabel.setFont(new Font("System Bold", 11.0));
+            patientNameLabel.setTextFill(Color.web("#5e9f5a"));
+
+            // Datum & Zeit
+            Label dateTimeLabel = new Label("Datum: " + app.getDate() + " | Zeit: " + app.getTime());
+            dateTimeLabel.setLayoutX(10.0);
+            dateTimeLabel.setLayoutY(20.0);
+            dateTimeLabel.setFont(new Font("System", 9.0));
+            dateTimeLabel.setTextFill(Color.web("#ffffff"));
+
+            // Buttons
+            Button profileBtn = new Button("Profil");
+            profileBtn.setLayoutX(150.0);
+            profileBtn.setLayoutY(35.0);
+            profileBtn.setPrefHeight(18.0);
+            profileBtn.setPrefWidth(60.0);
+            profileBtn.setStyle("-fx-background-color: #5e9f5a; -fx-background-radius: 5; -fx-border-radius: 5;");
+            profileBtn.setTextFill(Color.WHITE);
+            profileBtn.setFont(new Font("System Bold", 8.0));
+            profileBtn.setOnMouseClicked(e -> showPatientProfile(app.getPatient()));
+
+            Button cancelBtn = new Button("Stornieren");
+            cancelBtn.setLayoutX(220.0);
+            cancelBtn.setLayoutY(35.0);
+            cancelBtn.setPrefHeight(18.0);
+            cancelBtn.setPrefWidth(70.0);
+            cancelBtn.setStyle("-fx-background-color: #dc3545; -fx-background-radius: 5; -fx-border-radius: 5;");
+            cancelBtn.setTextFill(Color.WHITE);
+            cancelBtn.setFont(new Font("System Bold", 8.0));
+            cancelBtn.setOnMouseClicked(e -> cancelAppointment(app));
+
+            appointmentPane.getChildren().addAll(patientNameLabel, dateTimeLabel, profileBtn, cancelBtn);
+            appointmentsPane.getChildren().add(appointmentPane);
         }
     }
 }
