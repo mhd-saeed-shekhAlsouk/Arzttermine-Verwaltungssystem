@@ -88,10 +88,7 @@ public class SingletonAppointmentSystem {
 
     public String editProfile(int id, String firstName, String lastName, Date dob, String email) {
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty()) {
-            return "Please Fill All the Fields";
-        }
-        if (dob.equals(null)) {
-            return "Please Enter the Date of Birth";
+            return "Bitte füllen Sie alle Felder aus.";
         }
         for (User user : users) {
             if (user.getId() == id) {
@@ -107,7 +104,7 @@ public class SingletonAppointmentSystem {
                 }
             }
         }
-        return "Success";
+        return "Erfolgreich";
     }
 
     public void setLoggedInUser(User user) {
