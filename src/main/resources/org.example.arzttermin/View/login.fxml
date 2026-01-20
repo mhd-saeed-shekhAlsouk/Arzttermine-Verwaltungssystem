@@ -37,17 +37,20 @@
                 <TextField fx:id="usernameField" layoutX="137.0" layoutY="165.0" prefHeight="25.0" prefWidth="284.0" promptText="Benutzername" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" />
                 <PasswordField fx:id="passwordField" layoutX="137.0" layoutY="240.0" prefHeight="25.0" prefWidth="284.0" promptText="passwort" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" />
                 <Label fx:id="errorLabel" layoutX="36.0" layoutY="292.0" text="Fehler" textFill="RED" visible="false" />
-                <Button layoutX="175.0" layoutY="331.0" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="35.0" prefWidth="208.0" style="-fx-background-color: #5E9F5A;" text="Anmelden" textFill="WHITE">
+                <Button layoutX="175.0" layoutY="331.0" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="35.0" prefWidth="208.0" style="-fx-background-color: #5E9F5A; -fx-background-radius: 10px;" text="Anmelden" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="204.0" layoutY="474.0" mnemonicParsing="false" onAction="#signUpButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #5E9F5A;" text="Registrieren" textFill="WHITE">
+                <Button layoutX="204.0" layoutY="474.0" mnemonicParsing="false" onAction="#signUpButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #5E9F5A; -fx-background-radius: 10px;" text="Registrieren" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
-                <Label layoutX="14.0" layoutY="436.0" text="Haben Sie noch kein Konto?" textFill="WHITE" />
+                <Label layoutX="25.0" layoutY="437.0" text="Haben Sie noch kein Konto?" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
             </children>
         </Pane>
         <ImageView fitHeight="131.0" fitWidth="115.0" layoutX="1789.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
