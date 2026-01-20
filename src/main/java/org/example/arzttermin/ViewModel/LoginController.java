@@ -51,7 +51,7 @@ public class LoginController {
             Parent summaryRoot = loader.load();
 
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            Scene scene = new Scene(summaryRoot, 1000 , 600);
+            Scene scene = new Scene(summaryRoot, 1920 , 1024);
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
@@ -66,7 +66,7 @@ public class LoginController {
             PatientDashboardController controller = loader.getController();
             controller.loadDetails(SingletonAppointmentSystem.getInstance().getLoggedInUser(), null);
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            Scene scene = new Scene(summaryRoot, 1000 , 600);
+            Scene scene = new Scene(summaryRoot, 1920 , 1024);
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
@@ -81,7 +81,7 @@ public class LoginController {
             DoctorDashboardController controller = loader.getController();
             controller.loadDetails(SingletonAppointmentSystem.getInstance().getLoggedInUser(), null);
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            Scene scene = new Scene(summaryRoot, 1000 , 600);
+            Scene scene = new Scene(summaryRoot, 1920 , 1024);
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {

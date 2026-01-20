@@ -14,7 +14,7 @@ public class AppointmentSystem extends Application {
         SingletonAppointmentSystem.getInstance();
 
         FXMLLoader fxmlLoader = new FXMLLoader(AppointmentSystem.class.getResource("/org.example.arzttermin/View/login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 1920, 1024);
         stage.setTitle("PraxPlan");
         stage.setScene(scene);
         stage.show();
