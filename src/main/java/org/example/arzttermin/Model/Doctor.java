@@ -8,7 +8,7 @@ public class Doctor extends User{
         super(id, firstName, lastName, username, password, "Doctor", dob, email, gender, isActive);
         this.setAvailablility(new ArrayList<>());
         for (int i = 1; i < 30; i++){
-            getAvailablility().add(new AvailabilityCalendar(i + "-01-2025"));
+            getAvailablility().add(new AvailabilityCalendar(i + "-01-2026"));
         }
 
     }
