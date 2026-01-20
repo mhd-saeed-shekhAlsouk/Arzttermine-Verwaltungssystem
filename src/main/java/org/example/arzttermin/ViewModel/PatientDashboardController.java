@@ -154,26 +154,26 @@ public class PatientDashboardController {
         for (User doctor : SingletonAppointmentSystem.getInstance().getUsers("Doctor")) {
             Pane doctorPane = new Pane();
             doctorPane.setLayoutX(0.0);
-            doctorPane.setLayoutY(5.0 + (i * 50));
-            doctorPane.setPrefHeight(45.0);
-            doctorPane.setPrefWidth(413.0);
+            doctorPane.setLayoutY(5.0 + (i * 60));
+            doctorPane.setPrefHeight(55.0);
+            doctorPane.setPrefWidth(505.0);
             doctorPane.setStyle("-fx-background-color: #232323; -fx-border-color: #5e9f5a; -fx-border-radius: 5; -fx-background-radius: 5;");
 
             Label doctorName = new Label(doctor.getFirstName() + " " + doctor.getLastName());
             doctorName.setLayoutX(10.0);
             doctorName.setLayoutY(8.0);
             doctorName.setTextFill(Color.web("#5e9f5a"));
-            doctorName.setFont(new Font("System Bold", 14.0));
+            doctorName.setFont(new Font("System Bold", 15.0));
 
-            Label doctorInfo = new Label(i == 0 ? "General Physician" : i == 1 ? "Cardiologist" : "Neurologist");
+            Label doctorInfo = new Label(i == 0 ? "Allgemeinmediziner" : i == 1 ? "Kardiologe" : "Neurologe");
             doctorInfo.setLayoutX(10.0);
-            doctorInfo.setLayoutY(25.0);
+            doctorInfo.setLayoutY(27.0);
             doctorInfo.setTextFill(Color.web("#ffffff"));
-            doctorInfo.setFont(new Font("System", 10.0));
+            doctorInfo.setFont(new Font("System", 11.0));
 
             Button viewProfileBtn = new Button("Profil");
-            viewProfileBtn.setLayoutX(320.0);
-            viewProfileBtn.setLayoutY(10.0);
+            viewProfileBtn.setLayoutX(380.0);
+            viewProfileBtn.setLayoutY(12.0);
             viewProfileBtn.setMnemonicParsing(false);
             viewProfileBtn.setPrefHeight(25.0);
             viewProfileBtn.setPrefWidth(80.0);
@@ -198,39 +198,56 @@ public class PatientDashboardController {
         for (Appointment app : SingletonAppointmentSystem.getInstance().getAppointments()) {
             Pane appointmentPane = new Pane();
             appointmentPane.setLayoutX(0.0);
-            appointmentPane.setLayoutY(5.0 + (i * 50));
-            appointmentPane.setPrefHeight(45.0);
-            appointmentPane.setPrefWidth(454.0);
+            appointmentPane.setLayoutY(5.0 + (i * 65));
+            appointmentPane.setPrefHeight(60.0);
+            appointmentPane.setPrefWidth(540.0);
             appointmentPane.setStyle("-fx-background-color: #232323; -fx-border-color: #5e9f5a; -fx-border-radius: 5; -fx-background-radius: 5;");
 
             Label doctorName = new Label(app.getDoctor().getFirstName() + " " + app.getDoctor().getLastName());
             doctorName.setLayoutX(10.0);
             doctorName.setLayoutY(8.0);
             doctorName.setTextFill(Color.web("#5e9f5a"));
-            doctorName.setFont(new Font("System Bold", 14.0));
+            doctorName.setFont(new Font("System Bold", 15.0));
 
             Label appointmentInfo = new Label("Datum: " + app.getDate() + " | Uhrzeit: " + app.getTime());
 
             appointmentInfo.setLayoutX(10.0);
-            appointmentInfo.setLayoutY(25.0);
+            appointmentInfo.setLayoutY(27.0);
             appointmentInfo.setTextFill(Color.web("#ffffff"));
-            appointmentInfo.setFont(new Font("System", 10.0));
+            appointmentInfo.setFont(new Font("System", 11.0));
 
             Button cancelBtn = new Button("Stornieren");
-            cancelBtn.setLayoutX(370.0);
-            cancelBtn.setLayoutY(10.0);
+            cancelBtn.setLayoutX(420.0);
+            cancelBtn.setLayoutY(15.0);
             cancelBtn.setMnemonicParsing(false);
             cancelBtn.setPrefHeight(25.0);
             cancelBtn.setPrefWidth(70.0);
-            cancelBtn.setStyle("-fx-background-color: #ffffff; -fx-border-radius: 5; -fx-background-radius: 15;");
-            cancelBtn.setTextFill(Color.web("#5e9f5a"));
+            cancelBtn.setStyle("-fx-background-color: #dc2424; -fx-border-radius: 5; -fx-background-radius: 15;");
+            cancelBtn.setTextFill(Color.web("#ffffff"));
             cancelBtn.setFont(new Font("System Bold", 10.0));
             cancelBtn.setOnMouseClicked(e -> {
-                String response = SingletonAppointmentSystem.getInstance().cancelAppointment(app);
-                if (response.equals("Erfolgreich")) {
-                    loadAppointmentsList();
-                }
+                Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmAlert.setTitle("Termin stornieren");
+                confirmAlert.setHeaderText("Termin stornieren");
+                confirmAlert.setContentText("Möchten Sie diesen Termin wirklich stornieren?");
+
+                confirmAlert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.OK) {
+                        String result = SingletonAppointmentSystem.getInstance().cancelAppointment(app);
+
+                        if (result.equals("Erfolgreich")) {
+                            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                            successAlert.setTitle("Erfolg");
+                            successAlert.setHeaderText(null);
+                            successAlert.setContentText("Termin wurde erfolgreich storniert.");
+                            successAlert.showAndWait();
+
+                            loadAppointmentsList();
+                        }
+                    }
+                });
             });
+
 
 
             appointmentPane.getChildren().addAll(doctorName, appointmentInfo, cancelBtn);
@@ -341,35 +358,34 @@ public class PatientDashboardController {
         nameLabel.setLayoutX(10.0);
         nameLabel.setLayoutY(10.0);
         nameLabel.setTextFill(Color.web("#5e9f5a"));
-        nameLabel.setFont(new Font("System Bold", 17.0));
-
+        nameLabel.setFont(new Font("System Bold", 18.0));
         // Username
         Label usernameLabel = new Label("Benutzername: " + doctor.getUsername());
         usernameLabel.setLayoutX(10.0);
         usernameLabel.setLayoutY(70.0);
         usernameLabel.setTextFill(Color.web("#ffffff"));
-        usernameLabel.setFont(new Font("System Bold", 12.0));
+        usernameLabel.setFont(new Font("System ", 12.0));
 
         // Email
         Label emailLabel = new Label("E-Mail: " + doctor.getEmail());
         emailLabel.setLayoutX(10.0);
         emailLabel.setLayoutY(95.0);
         emailLabel.setTextFill(Color.web("#ffffff"));
-        emailLabel.setFont(new Font("System Bold", 12.0));
+        emailLabel.setFont(new Font("System ", 12.0));
 
         // Gender
         Label genderLabel = new Label("Geschlecht: " + doctor.getGender());
         genderLabel.setLayoutX(10.0);
         genderLabel.setLayoutY(120.0);
         genderLabel.setTextFill(Color.web("#ffffff"));
-        genderLabel.setFont(new Font("System Bold", 12.0));
+        genderLabel.setFont(new Font("System ", 12.0));
 
         // DOB
         Label dobLabel = new Label("Geburtsdatum: " + new SimpleDateFormat("MM-dd-yyyy").format(doctor.getDob()));
         dobLabel.setLayoutX(10.0);
         dobLabel.setLayoutY(145.0);
         dobLabel.setTextFill(Color.web("#ffffff"));
-        dobLabel.setFont(new Font("System Bold", 12.0));
+        dobLabel.setFont(new Font("System ", 12.0));
 
 
         // Specialization (based on index)
@@ -379,7 +395,7 @@ public class PatientDashboardController {
         Label specializationLabel = new Label("Fachrichtung: " + specializ);
         specializationLabel.setLayoutX(10.0);
         specializationLabel.setLayoutY(45.0);
-        specializationLabel.setFont(new Font("System Bold", 12.0));
+        specializationLabel.setFont(new Font("System", 12.0));
         specializationLabel.setTextFill(Color.web("#ffffff"));
 
         doctorProfilePane.getChildren().addAll(
@@ -397,9 +413,9 @@ public class PatientDashboardController {
         // Title
         Label titleLabel = new Label("Profil bearbeiten");
         titleLabel.setLayoutX(10.0);
-        titleLabel.setLayoutY(10.0);
+        titleLabel.setLayoutY(7.0);
         titleLabel.setTextFill(Color.web("#5e9f5a"));
-        titleLabel.setFont(new Font("System Bold", 16.0));
+        titleLabel.setFont(new Font("System Bold", 18.0));
 
         // First Name
         Label firstNameLabel = new Label("Vorname:");
@@ -500,7 +516,7 @@ public class PatientDashboardController {
                 user.getId(), firstName, lastName, java.sql.Date.valueOf(dob), email
         );
 
-        if (response.equals("Success")) {
+        if (response.equals("Erfolgreich")) {
             // Update the user object
             user.setFirstName(firstName);
             user.setLastName(lastName);
@@ -512,17 +528,16 @@ public class PatientDashboardController {
 
             // Show success message
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Profile Updated");
-            alert.setContentText("Your profile has been successfully updated!");
+            alert.setTitle("Erfolgreich");
+            alert.setHeaderText("Profil wurde Erfolgreich bearbeitet");
             alert.showAndWait();
 
             // Show current profile in panel
             showCurrentProfileInPanel();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Update Failed");
+            alert.setTitle("Fehler");
+            alert.setHeaderText("Das Update konnte nicht durchgeführt werden");
             alert.setContentText(response);
             alert.showAndWait();
         }
@@ -547,16 +562,16 @@ public class PatientDashboardController {
         // Show current user profile in the middle panel
         Label titleLabel = new Label("Mein Profil");
         titleLabel.setLayoutX(10.0);
-        titleLabel.setLayoutY(10.0);
+        titleLabel.setLayoutY(7.0);
         titleLabel.setTextFill(Color.web("#5e9f5a"));
-        titleLabel.setFont(new Font("System Bold", 16.0));
+        titleLabel.setFont(new Font("System Bold", 18.0));
 
         // Profile details
         Label nameLabel = new Label("Name: " + user.getFirstName() + " " + user.getLastName());
         nameLabel.setLayoutX(10.0);
         nameLabel.setLayoutY(40.0);
         nameLabel.setTextFill(Color.web("#ffffff"));
-        nameLabel.setFont(new Font("System Bold", 12.0));
+        nameLabel.setFont(new Font("System ", 12.0));
 
         Label emailLabel = new Label("E-Mail: " + user.getEmail());
         emailLabel.setLayoutX(10.0);
@@ -564,7 +579,7 @@ public class PatientDashboardController {
         emailLabel.setTextFill(Color.web("#ffffff"));
         emailLabel.setFont(new Font("System", 12.0));
 
-        Label dobLabel = new Label("Geburtsdatum:: " + new SimpleDateFormat("MM-dd-yyyy").format(user.getDob()));
+        Label dobLabel = new Label("Geburtsdatum: " + new SimpleDateFormat("MM-dd-yyyy").format(user.getDob()));
         dobLabel.setLayoutX(10.0);
         dobLabel.setLayoutY(90.0);
         dobLabel.setTextFill(Color.web("#ffffff"));
@@ -593,7 +608,7 @@ public class PatientDashboardController {
             FXMLLoader loader = new FXMLLoader(AppointmentSystem.class.getResource("/org.example.arzttermin/View/login.fxml"));
             Parent summaryRoot = loader.load();
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            Scene scene = new Scene(summaryRoot, 1000 , 600);
+            Scene scene = new Scene(summaryRoot, 1920 , 1024);
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {

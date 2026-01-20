@@ -60,6 +60,9 @@ public class DoctorDashboardController {
     @FXML
     private DatePicker dateFilterPicker;
 
+
+
+
     public void loadDetails(User doctorUser, AnchorPane pane) {
         doctor = doctorUser;
         // rootPane = pane;
@@ -110,23 +113,23 @@ public class DoctorDashboardController {
             // Create appointment pane
             AnchorPane appointmentPane = new AnchorPane();
             appointmentPane.setLayoutX(5.0);
-            appointmentPane.setLayoutY(5.0 + (i * 65));
-            appointmentPane.setPrefHeight(60.0);
-            appointmentPane.setPrefWidth(340.0);
+            appointmentPane.setLayoutY(5.0 + (i * 75));
+            appointmentPane.setPrefHeight(70.0);
+            appointmentPane.setPrefWidth(350.0);
             appointmentPane.setStyle("-fx-background-color: #232323; -fx-border-color: #5e9f5a; -fx-border-radius: 5; -fx-background-radius: 5;");
 
             // Patient name
             Label patientNameLabel = new Label("Patient: " + app.getPatient().getFirstName() + " " + app.getPatient().getLastName());
             patientNameLabel.setLayoutX(10.0);
             patientNameLabel.setLayoutY(5.0);
-            patientNameLabel.setFont(new Font("System Bold", 11.0));
+            patientNameLabel.setFont(new Font("System Bold", 15.0));
             patientNameLabel.setTextFill(Color.web("#5e9f5a"));
 
             // Date and time
             Label dateTimeLabel = new Label("Datum: " + app.getDate() + " | Zeit: " + app.getTime());
             dateTimeLabel.setLayoutX(10.0);
-            dateTimeLabel.setLayoutY(20.0);
-            dateTimeLabel.setFont(new Font("System", 9.0));
+            dateTimeLabel.setLayoutY(24.0);
+            dateTimeLabel.setFont(new Font("System", 11.0));
             dateTimeLabel.setTextFill(Color.web("#ffffff"));
 
 
@@ -134,13 +137,13 @@ public class DoctorDashboardController {
 
             // View Profile Button
             Button profileBtn = new Button("Profil");
-            profileBtn.setLayoutX(150.0);
+            profileBtn.setLayoutX(170.0);
             profileBtn.setLayoutY(35.0);
             profileBtn.setPrefHeight(18.0);
-            profileBtn.setPrefWidth(60.0);
+            profileBtn.setPrefWidth(63.0);
             profileBtn.setStyle("-fx-background-color: #5e9f5a; -fx-background-radius: 5; -fx-border-radius: 5;");
             profileBtn.setTextFill(Color.WHITE);
-            profileBtn.setFont(new Font("System Bold", 8.0));
+            profileBtn.setFont(new Font("System Bold", 11.0));
             profileBtn.setOnMouseClicked(e -> {
                 showPatientProfile(app.getPatient());
             });
@@ -148,13 +151,13 @@ public class DoctorDashboardController {
 
             // Cancel Button (for accepted appointments)
             Button cancelBtn = new Button("Stornieren");
-            cancelBtn.setLayoutX(220.0);
+            cancelBtn.setLayoutX(240.0);
             cancelBtn.setLayoutY(35.0);
             cancelBtn.setPrefHeight(18.0);
             cancelBtn.setPrefWidth(70.0);
             cancelBtn.setStyle("-fx-background-color: #dc3545; -fx-background-radius: 5; -fx-border-radius: 5;");
             cancelBtn.setTextFill(Color.WHITE);
-            cancelBtn.setFont(new Font("System Bold", 8.0));
+            cancelBtn.setFont(new Font("System Bold", 11.0));
             cancelBtn.setOnMouseClicked(e -> {
                 cancelAppointment(app);
             });
@@ -178,41 +181,41 @@ public class DoctorDashboardController {
         titleLabel.setLayoutX(10.0);
         titleLabel.setLayoutY(10.0);
         titleLabel.setTextFill(Color.web("#5e9f5a"));
-        titleLabel.setFont(new Font("System Bold", 16.0));
+        titleLabel.setFont(new Font("System Bold", 18.0));
 
         // Patient Name
         Label nameLabel = new Label("Name:  " + patient.getFirstName() + " " + patient.getLastName());
         nameLabel.setLayoutX(10.0);
         nameLabel.setLayoutY(40.0);
-        nameLabel.setFont(new Font("System Bold", 12.0));
+        nameLabel.setFont(new Font("System", 14.0));
         nameLabel.setTextFill(Color.web("#ffffff"));
 
         // Email
         Label emailLabel = new Label("E-Mail:  " + patient.getEmail());
         emailLabel.setLayoutX(10.0);
         emailLabel.setLayoutY(65.0);
-        emailLabel.setFont(new Font("System", 12.0));
+        emailLabel.setFont(new Font("System", 14.0));
         emailLabel.setTextFill(Color.web("#ffffff"));
 
         // Gender
         Label genderLabel = new Label("Geschlecht:  " + patient.getGender());
         genderLabel.setLayoutX(10.0);
         genderLabel.setLayoutY(90.0);
-        genderLabel.setFont(new Font("System", 12.0));
+        genderLabel.setFont(new Font("System", 14.0));
         genderLabel.setTextFill(Color.web("#ffffff"));
 
         // DOB
         Label dobLabel = new Label("Geburtsdatum:  " + new SimpleDateFormat("MM-dd-yyyy").format(patient.getDob()));
         dobLabel.setLayoutX(10.0);
         dobLabel.setLayoutY(115.0);
-        dobLabel.setFont(new Font("System", 12.0));
+        dobLabel.setFont(new Font("System", 14.0));
         dobLabel.setTextFill(Color.web("#ffffff"));
 
         // Role
         Label roleLabel = new Label("Rolle:  " + patient.getRole());
         roleLabel.setLayoutX(10.0);
         roleLabel.setLayoutY(140.0);
-        roleLabel.setFont(new Font("System", 12.0));
+        roleLabel.setFont(new Font("System", 14.0));
         roleLabel.setTextFill(Color.web("#ffffff"));
 
 
@@ -234,12 +237,12 @@ public class DoctorDashboardController {
         titleLabel.setLayoutX(10.0);
         titleLabel.setLayoutY(10.0);
         titleLabel.setTextFill(Color.web("#5e9f5a"));
-        titleLabel.setFont(new Font("System Bold", 16.0));
+        titleLabel.setFont(new Font("System Bold", 18.0));
 
         Label instructionLabel = new Label("Wählen Sie einen Termin aus, um Patientdaten zu sehen");
         instructionLabel.setLayoutX(10.0);
         instructionLabel.setLayoutY(50.0);
-        instructionLabel.setFont(new Font("System", 10.0));
+        instructionLabel.setFont(new Font("System", 12.0));
         instructionLabel.setTextFill(Color.web("#ffffff"));
 
         patientInfoPane.getChildren().addAll(titleLabel, instructionLabel);
@@ -287,7 +290,7 @@ public class DoctorDashboardController {
             FXMLLoader loader = new FXMLLoader(AppointmentSystem.class.getResource("/org.example.arzttermin/View/login.fxml"));
             Parent summaryRoot = loader.load();
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            Scene scene = new Scene(summaryRoot, 1000 , 600);
+            Scene scene = new Scene(summaryRoot, 1920 , 1024);
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
@@ -356,48 +359,53 @@ public class DoctorDashboardController {
 
             AnchorPane appointmentPane = new AnchorPane();
             appointmentPane.setLayoutX(5.0);
-            appointmentPane.setLayoutY(5.0 + (i * 65));
-            appointmentPane.setPrefHeight(60.0);
-            appointmentPane.setPrefWidth(340.0);
+            appointmentPane.setLayoutY(5.0 + (i * 75));
+            appointmentPane.setPrefHeight(70.0);
+            appointmentPane.setPrefWidth(350.0);
             appointmentPane.setStyle("-fx-background-color: #232323; -fx-border-color: #5e9f5a; -fx-border-radius: 5; -fx-background-radius: 5;");
 
             // Patient Name
             Label patientNameLabel = new Label("Patient: " + app.getPatient().getFirstName() + " " + app.getPatient().getLastName());
             patientNameLabel.setLayoutX(10.0);
             patientNameLabel.setLayoutY(5.0);
-            patientNameLabel.setFont(new Font("System Bold", 11.0));
+            patientNameLabel.setFont(new Font("System Bold", 15.0));
             patientNameLabel.setTextFill(Color.web("#5e9f5a"));
 
             // Datum & Zeit
             Label dateTimeLabel = new Label("Datum: " + app.getDate() + " | Zeit: " + app.getTime());
             dateTimeLabel.setLayoutX(10.0);
-            dateTimeLabel.setLayoutY(20.0);
-            dateTimeLabel.setFont(new Font("System", 9.0));
+            dateTimeLabel.setLayoutY(24.0);
+            dateTimeLabel.setFont(new Font("System", 11.0));
             dateTimeLabel.setTextFill(Color.web("#ffffff"));
 
             // Buttons
             Button profileBtn = new Button("Profil");
-            profileBtn.setLayoutX(150.0);
+            profileBtn.setLayoutX(170.0);
             profileBtn.setLayoutY(35.0);
             profileBtn.setPrefHeight(18.0);
             profileBtn.setPrefWidth(60.0);
             profileBtn.setStyle("-fx-background-color: #5e9f5a; -fx-background-radius: 5; -fx-border-radius: 5;");
             profileBtn.setTextFill(Color.WHITE);
-            profileBtn.setFont(new Font("System Bold", 8.0));
+            profileBtn.setFont(new Font("System Bold", 11.0));
             profileBtn.setOnMouseClicked(e -> showPatientProfile(app.getPatient()));
 
             Button cancelBtn = new Button("Stornieren");
-            cancelBtn.setLayoutX(220.0);
+            cancelBtn.setLayoutX(240.0);
             cancelBtn.setLayoutY(35.0);
             cancelBtn.setPrefHeight(18.0);
             cancelBtn.setPrefWidth(70.0);
             cancelBtn.setStyle("-fx-background-color: #dc3545; -fx-background-radius: 5; -fx-border-radius: 5;");
             cancelBtn.setTextFill(Color.WHITE);
-            cancelBtn.setFont(new Font("System Bold", 8.0));
+            cancelBtn.setFont(new Font("System Bold", 11.0));
             cancelBtn.setOnMouseClicked(e -> cancelAppointment(app));
 
             appointmentPane.getChildren().addAll(patientNameLabel, dateTimeLabel, profileBtn, cancelBtn);
             appointmentsPane.getChildren().add(appointmentPane);
         }
     }
+
+
+
+
+
 }
