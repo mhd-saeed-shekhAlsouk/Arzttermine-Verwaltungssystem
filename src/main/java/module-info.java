@@ -5,6 +5,7 @@ module org.example.arzttermin {
     requires org.controlsfx.controls;
     requires java.sql;
     requires javafx.graphics;
+    requires jbcrypt;
 
     opens org.example.arzttermin to javafx.fxml;
     opens org.example.arzttermin.ViewModel to javafx.fxml;
