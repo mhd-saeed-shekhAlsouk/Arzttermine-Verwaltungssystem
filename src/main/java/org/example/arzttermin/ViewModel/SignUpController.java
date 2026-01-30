@@ -79,7 +79,7 @@ public class SignUpController {
         );
 
         errorLabel.setText(response);
-        if (response.equals("Created")) {
+        if (response.equals("Account erfolgreich erstellt.")) {
             signUpButton.setVisible(false);
             loginButton.setPrefSize(387, 40);
             loginButton.setLayoutX(111);
