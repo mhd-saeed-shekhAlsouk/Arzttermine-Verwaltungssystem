@@ -101,7 +101,7 @@ public class PatientDashboardController {
         firstNameLabel1.setText(u.getFirstName());
         lastNameLabel1.setText(u.getLastName());
         usernameLabel1.setText(u.getUsername());
-        dobLabel1.setText(new SimpleDateFormat("MM-dd-yyyy").format(u.getDob()));
+        dobLabel1.setText(new SimpleDateFormat("dd-MM-yyyy").format(u.getDob()));
         emailLabel1.setText(u.getEmail());
         genderLabel1.setText(u.getGender());
         roleLabel1.setText(u.getRole());
@@ -315,7 +315,7 @@ public class PatientDashboardController {
         Label usernameLabel = createLabel("Benutzername: " + doctor.getUsername(), 10, 70, 12, "#ffffff", false);
         Label emailLabel = createLabel("E-Mail: " + doctor.getEmail(), 10, 95, 12, "#ffffff", false);
         Label genderLabel = createLabel("Geschlecht: " + doctor.getGender(), 10, 120, 12, "#ffffff", false);
-        Label dobLabel = createLabel("Geburtsdatum: " + new SimpleDateFormat("MM-dd-yyyy").format(doctor.getDob()), 10, 145, 12, "#ffffff", false);
+        Label dobLabel = createLabel("Geburtsdatum: " + new SimpleDateFormat("dd-MM-yyyy").format(doctor.getDob()), 10, 145, 12, "#ffffff", false);
 
         int doctorIndex = SingletonAppointmentSystem.getInstance().getUsers("Doctor").indexOf(doctor);
         String specializ = doctorIndex == 0 ? "Allgemeinmediziner" : doctorIndex == 1 ? "Kardiologe" : "Neurologe";
@@ -416,7 +416,7 @@ public class PatientDashboardController {
         firstNameLabel1.setText(user.getFirstName());
         lastNameLabel1.setText(user.getLastName());
         emailLabel1.setText(user.getEmail());
-        dobLabel1.setText(new SimpleDateFormat("MM-dd-yyyy").format(user.getDob()));
+        dobLabel1.setText(new SimpleDateFormat("dd-MM-yyyy").format(user.getDob()));
     }
 
     private void showCurrentProfileInPanel() {
@@ -427,7 +427,7 @@ public class PatientDashboardController {
         Label titleLabel = createLabel("Mein Profil", 10, 7, 18, "#5e9f5a", true);
         Label nameLabel = createLabel("Name: " + user.getFirstName() + " " + user.getLastName(), 10, 40, 12, "#ffffff", false);
         Label emailLabel = createLabel("E-Mail: " + user.getEmail(), 10, 65, 12, "#ffffff", false);
-        Label dobLabel = createLabel("Geburtsdatum: " + new SimpleDateFormat("MM-dd-yyyy").format(user.getDob()), 10, 90, 12, "#ffffff", false);
+        Label dobLabel = createLabel("Geburtsdatum: " + new SimpleDateFormat("dd-MM-yyyy").format(user.getDob()), 10, 90, 12, "#ffffff", false);
         Label genderLabel = createLabel("Geschlecht: " + user.getGender(), 10, 115, 12, "#ffffff", false);
         Label roleLabel = createLabel("Rolle: " + user.getRole(), 10, 140, 12, "#ffffff", false);
 
