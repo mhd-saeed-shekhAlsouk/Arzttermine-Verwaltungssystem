@@ -85,7 +85,7 @@ public class SignUpController {
             loginButton.setLayoutX(111);
             loginButton.setLayoutY(520);
             signUpButton.setFont(Font.font("System Bold", FontWeight.BOLD, 14));
-            errorLabel.setText("User Created Successfully");
+            errorLabel.setText("Account erfolgreich erstellt");
             errorLabel.setTextFill(Paint.valueOf("GREEN"));
         }
     }
