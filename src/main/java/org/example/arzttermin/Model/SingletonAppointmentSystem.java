@@ -1,4 +1,6 @@
 package org.example.arzttermin.Model;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.sql.Date;
 import java.util.*;
 
@@ -51,7 +53,7 @@ public class SingletonAppointmentSystem {
         db.loadAppointments(users, appointments);
     }
 
-
+/*
     public String registerUser(String firstName, String lastName, String email, String usename, String password, String c_password, String gender, java.sql.Date dob, String role) {
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || usename.isEmpty() || password.isEmpty() || gender.isEmpty()) {
             return "Please Fill All the Fields";
@@ -69,6 +71,47 @@ public class SingletonAppointmentSystem {
         return "Password And Confirm Password Must Match";
     }
 
+ */
+
+    public String registerUser(String firstName, String lastName, String email, String username,String password, String c_password, String gender, java.sql.Date dob, String role){
+        //Input prüfen
+        if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || username.isEmpty() || password.isEmpty() || gender.isEmpty()) {
+            return "Bitte füllen Sie alle Felder aus.";
+        }
+        if (dob == null) {
+            return "Bitte geben Sie ihr Geburtsdatum ein.";
+        }
+
+        //Existiert der Benutzername bereits?
+        if (usernameExists(username)){
+            return "Der Username existiert bereits.";
+        }
+
+        //Beide Passwort eingaben stimmen überein
+        if (!password.equals(c_password)) {
+            return "Passwörter müssen übereinstimmen.";
+        }
+
+        //Passwort mit BCrypt hashen
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(12));
+
+        //Nutzer mit hashed passwort erstellen
+        int id = users.size() > 0 ? users.get(users.size() - 1).getId() + 1 : 1;
+        Patient p = new Patient(id, firstName, lastName, username, hashedPassword, dob, email, gender, true);
+        users.add(p);
+        db.addPatient(p);
+        return "Account erfolgreich erstellt.";
+    }
+
+    private boolean usernameExists(String username){
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+/*
     public String login(String username, String password) {
         if (username.isEmpty() || password.isEmpty()) {
             return "Please provide both username and password.";
@@ -81,10 +124,31 @@ public class SingletonAppointmentSystem {
         }
         return "Invalid Username / Password";
     }
+ */
+
+    public String login(String username, String password) {
+        if (username.isEmpty() || password.isEmpty()) {
+            return "Bitte füllen sie alle Felder aus.";
+        }
+        //Benutzer mit Benutzernamen finden
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                //Passwort mit BCrypt verifizieren
+                if (BCrypt.checkpw(password, user.getPassword())) {
+                    setLoggedInUser(user);
+                    return user.getRole();
+                }
+                break; //Benutzername existiert aber falsches Passwort
+            }
+        }
+        return "Ungültige Eingabe.";
+    }
 
     public User getLoggedInUser() {
         return LoggedInUser;
     }
+
+
 
     public String editProfile(int id, String firstName, String lastName, Date dob, String email) {
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty()) {
