@@ -19,7 +19,6 @@
 
     <children>
 
-        <!-- ✅ Background Image (scales with window) -->
         <ImageView pickOnBounds="true" preserveRatio="false"
                    fitWidth="${rootPane.width}"
                    fitHeight="${rootPane.height}">
@@ -28,14 +27,12 @@
             </image>
         </ImageView>
 
-        <!-- ✅ Center container: keeps login box centered -->
         <StackPane AnchorPane.topAnchor="0.0"
                    AnchorPane.bottomAnchor="0.0"
                    AnchorPane.leftAnchor="0.0"
                    AnchorPane.rightAnchor="0.0">
 
             <children>
-                <!-- Login Box -->
                 <Pane prefHeight="636.0" prefWidth="557.0"
                       maxHeight="636.0" maxWidth="557.0"
                       style="-fx-background-color: #1A1D22;
@@ -112,7 +109,6 @@
             </children>
         </StackPane>
 
-        <!-- ✅ Logo stays top-right -->
         <ImageView fitHeight="131.0" fitWidth="115.0"
                    pickOnBounds="true" preserveRatio="true"
                    AnchorPane.topAnchor="10.0"
