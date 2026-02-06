@@ -57,7 +57,6 @@ public class DoctorDashboardController {
     }
 
     /* ===================== DOCTOR PROFILE ===================== */
-
     private void loadDoctorProfile() {
         doctorNameLabel.setText("Dr. " + doctor.getFirstName() + " " + doctor.getLastName());
         doctorEmailLabel.setText(doctor.getEmail());
@@ -215,7 +214,7 @@ public class DoctorDashboardController {
                     AppointmentSystem.class.getResource(
                             "/org.example.arzttermin/View/login.fxml"));
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            stage.setScene(new Scene(root, 1920, 1024));
+            stage.setScene(new Scene(root, 1600, 920));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
