@@ -71,7 +71,7 @@ public class SingletonAppointmentSystem {
         return "Password And Confirm Password Must Match";
     }
 
- */
+*/
 
     public String registerUser(String firstName, String lastName, String email, String username,String password, String c_password, String gender, java.sql.Date dob, String role){
         //Input prüfen
@@ -111,6 +111,9 @@ public class SingletonAppointmentSystem {
         }
         return false;
     }
+
+
+
 /*
     public String login(String username, String password) {
         if (username.isEmpty() || password.isEmpty()) {

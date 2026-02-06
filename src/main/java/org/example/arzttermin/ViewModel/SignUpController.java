@@ -97,7 +97,7 @@ public class SignUpController {
             Parent summaryRoot = loader.load();
 
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            Scene scene = new Scene(summaryRoot, 1600, 920);
+            Scene scene = new Scene(summaryRoot, 1920, 1024);
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
