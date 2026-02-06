@@ -214,7 +214,7 @@ public class DoctorDashboardController {
                     AppointmentSystem.class.getResource(
                             "/org.example.arzttermin/View/login.fxml"));
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            stage.setScene(new Scene(root, 1920, 1024));
+            stage.setScene(new Scene(root, 1500, 800));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
