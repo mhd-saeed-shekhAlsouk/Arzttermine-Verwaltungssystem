@@ -9,122 +9,121 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootPane" prefHeight="1024.0" prefWidth="1920.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.arzttermin.ViewModel.DoctorDashboardController">
 
     <children>
-      <ImageView fitHeight="1024.0" fitWidth="1920.0" pickOnBounds="true">
-         <image>
-            <Image url="@../images/baclgroung.png" />
-         </image>
-      </ImageView>
 
-        <!-- ========== LEFT PANEL : DOCTOR PROFILE ========== -->
-        <Pane layoutX="359.0" layoutY="212.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
-
-            <children>
-                <Label layoutX="10" layoutY="10" text="Arztprofil" textFill="#5e9f5a">
-                    <font><Font name="System Bold" size="18.0" /></font>
-                </Label>
-
-                <Label layoutX="10.0" layoutY="55.0" text="Name:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-                <Label fx:id="doctorNameLabel" layoutX="67.0" layoutY="55.0" text="Arztname" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-
-                <Label layoutX="11.0" layoutY="83.0" text="E-Mail:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-                <Label fx:id="doctorEmailLabel" layoutX="65.0" layoutY="84.0" text="doctor@email.com" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-
-                <Label layoutX="11.0" layoutY="112.0" text="Fachrichtung:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-                <Label fx:id="specializationLabel" layoutX="106.0" layoutY="112.0" text="Allgemeinmedizin" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-
-                <Label layoutX="11.0" layoutY="143.0" text="Geschlecht: " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-                <Label fx:id="genderLabel" layoutX="93.0" layoutY="143.0" text="Männlich" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-
-                <Label layoutX="11.0" layoutY="175.0" text="Geburtsdatum:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-                <Label fx:id="dobLabel" layoutX="116.0" layoutY="177.0" text="01-01-1990" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            </children>
-        </Pane>
-
-        <!-- ========== MIDDLE PANEL : PATIENT INFO ========== -->
-        <Pane layoutX="769.0" layoutY="212.0" prefHeight="600.0" prefWidth="383.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
-
-            <children>
-                <AnchorPane fx:id="patientInfoPane" layoutX="10.0" layoutY="13.0" prefHeight="600.0" prefWidth="400.0" />
-            </children>
-        </Pane>
-
-        <!-- ========== RIGHT PANEL : APPOINTMENTS ========== -->
-        <Pane layoutX="1161.0" layoutY="212.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
-
-            <children>
-                <Label layoutX="10" layoutY="10" text="Termine" textFill="#5e9f5a">
-                    <font><Font name="System Bold" size="18.0" /></font>
-                </Label>
-                <!-- FILTER -->
-                <Label layoutX="9.0" layoutY="51.0" text="Termin filtern:" textFill="WHITE">
-               <font>
-                  <Font size="13.0" />
-               </font></Label>
-
-                <TextField fx:id="nameFilterField" layoutX="108.0" layoutY="47.0" prefHeight="25.0" prefWidth="125.0" promptText="Name" />
-
-                <DatePicker fx:id="dateFilterPicker" layoutX="246.0" layoutY="47.0" prefHeight="25.0" prefWidth="125.0" />
-
-                <!-- APPOINTMENT LIST -->
-                <ScrollPane fx:id="appointmentsScrollPane" hbarPolicy="NEVER" layoutX="10.0" layoutY="103.0" prefHeight="469.0" prefWidth="383.0" style="-fx-background-color: transparent;">
-
-                    <content>
-                        <AnchorPane fx:id="appointmentsPane" prefHeight="500.0" prefWidth="382.0" style="-fx-background-color: #1A1D22;" />
-                    </content>
-                </ScrollPane>
-            </children>
-        </Pane>
-
-        <!-- HEADER -->
-        <ImageView fitHeight="94.0" fitWidth="87.0" layoutX="10.0" layoutY="1.0">
+        <ImageView pickOnBounds="true" preserveRatio="false"
+                   fitWidth="${rootPane.width}"
+                   fitHeight="${rootPane.height}">
             <image>
-                <Image url="@../images/logo.png" />
+                <Image url="@../images/baclgroung.png" />
             </image>
         </ImageView>
 
-        <Label layoutX="92.0" layoutY="18.0" prefHeight="54.0" prefWidth="216.0" text="Doctor Dashboard" textFill="#5e9f5a">
-            <font><Font name="System Bold" size="24.0" /></font>
-        </Label>
+        <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
-        <!-- LOGOUT -->
-        <Button fx:id="logoutButton" layoutX="1359.0" layoutY="169.0" onAction="#handleLogoutClicked" prefHeight="37.0" prefWidth="155.0" style="-fx-background-color: #ffffff; -fx-background-radius: 9px; -fx-border-radius: 10px;" text="Abmelden" textFill="#5e9f5a">
-            <font><Font name="System Bold" size="14.0" /></font>
-        </Button>
+            <children>
+
+                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="AS_NEEDED" pannable="true" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;" vbarPolicy="AS_NEEDED">
+
+                    <content>
+                        <AnchorPane prefHeight="1024.0" prefWidth="1920.0" style="-fx-background-color: transparent;">
+                            <children>
+
+                                <Pane layoutX="359.0" layoutY="212.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
+                                    <children>
+                                        <Label layoutX="10" layoutY="10" text="Arztprofil" textFill="#5e9f5a">
+                                            <font><Font name="System Bold" size="18.0" /></font>
+                                        </Label>
+
+                                        <Label layoutX="10.0" layoutY="55.0" text="Name:" textFill="WHITE">
+                                            <font><Font name="System Bold" size="14.0" /></font>
+                                        </Label>
+                                        <Label fx:id="doctorNameLabel" layoutX="67.0" layoutY="55.0" text="Arztname" textFill="WHITE">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+
+                                        <Label layoutX="11.0" layoutY="83.0" text="E-Mail:" textFill="WHITE">
+                                            <font><Font name="System Bold" size="14.0" /></font>
+                                        </Label>
+                                        <Label fx:id="doctorEmailLabel" layoutX="65.0" layoutY="84.0" text="doctor@email.com" textFill="WHITE">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+
+                                        <Label layoutX="11.0" layoutY="112.0" text="Fachrichtung:" textFill="WHITE">
+                                            <font><Font name="System Bold" size="14.0" /></font>
+                                        </Label>
+                                        <Label fx:id="specializationLabel" layoutX="106.0" layoutY="112.0" text="Allgemeinmedizin" textFill="WHITE">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+
+                                        <Label layoutX="11.0" layoutY="143.0" text="Geschlecht: " textFill="WHITE">
+                                            <font><Font name="System Bold" size="14.0" /></font>
+                                        </Label>
+                                        <Label fx:id="genderLabel" layoutX="93.0" layoutY="143.0" text="Männlich" textFill="WHITE">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+
+                                        <Label layoutX="11.0" layoutY="175.0" text="Geburtsdatum:" textFill="WHITE">
+                                            <font><Font name="System Bold" size="14.0" /></font>
+                                        </Label>
+                                        <Label fx:id="dobLabel" layoutX="116.0" layoutY="177.0" text="01-01-1990" textFill="WHITE">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+                                    </children>
+                                </Pane>
+
+                                <Pane layoutX="769.0" layoutY="212.0" prefHeight="600.0" prefWidth="383.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
+                                    <children>
+                                        <AnchorPane fx:id="patientInfoPane" layoutX="10.0" layoutY="13.0" prefHeight="600.0" prefWidth="400.0" />
+                                    </children>
+                                </Pane>
+                                <Pane layoutX="1161.0" layoutY="212.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
+                                    <children>
+                                        <Label layoutX="10" layoutY="10" text="Termine" textFill="#5e9f5a">
+                                            <font><Font name="System Bold" size="18.0" /></font>
+                                        </Label>
+
+                                        <Label layoutX="9.0" layoutY="51.0" text="Termin filtern:" textFill="WHITE">
+                                            <font><Font size="13.0" /></font>
+                                        </Label>
+
+                                        <TextField fx:id="nameFilterField" layoutX="108.0" layoutY="47.0" prefHeight="25.0" prefWidth="125.0" promptText="Name" />
+                                        <DatePicker fx:id="dateFilterPicker" layoutX="246.0" layoutY="47.0" prefHeight="25.0" prefWidth="125.0" />
+
+                                        <ScrollPane fx:id="appointmentsScrollPane" hbarPolicy="NEVER" layoutX="10.0" layoutY="103.0" prefHeight="469.0" prefWidth="383.0" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
+                                            <content>
+                                                <AnchorPane fx:id="appointmentsPane" prefHeight="500.0" prefWidth="382.0" style="-fx-background-color: #1A1D22;" />
+                                            </content>
+                                        </ScrollPane>
+                                    </children>
+                                </Pane>
+
+                                <ImageView fitHeight="94.0" fitWidth="87.0" layoutX="10.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/logo.png" />
+                                    </image>
+                                </ImageView>
+
+                                <Label layoutX="92.0" layoutY="18.0" prefHeight="54.0" prefWidth="216.0" text="Doctor Dashboard" textFill="#5e9f5a">
+                                    <font><Font name="System Bold" size="24.0" /></font>
+                                </Label>
+
+                                <Button fx:id="logoutButton" layoutX="1359.0" layoutY="169.0" onAction="#handleLogoutClicked" prefHeight="37.0" prefWidth="155.0" style="-fx-background-color: #ffffff; -fx-background-radius: 9px; -fx-border-radius: 10px;" text="Abmelden" textFill="#5e9f5a">
+                                    <font><Font name="System Bold" size="14.0" /></font>
+                                </Button>
+
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </StackPane>
 
     </children>
 </AnchorPane>
