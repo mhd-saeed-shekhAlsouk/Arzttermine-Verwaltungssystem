@@ -178,7 +178,7 @@ public class PatientDashboardController {
             appointmentPane.setStyle("-fx-background-color: #232323; -fx-border-color: #5e9f5a; -fx-border-radius: 5; -fx-background-radius: 5;");
 
             Label patientName = createLabel(
-                    "Patient: " + app.getPatient().getFirstName() + " " + app.getPatient().getLastName(),
+                    "Doctor: " + app.getDoctor().getFirstName() + " " + app.getDoctor().getLastName(),
                     10, 5, 15, "#5e9f5a", true
             );
             Label appointmentInfo = createLabel("Datum: " + app.getDate() + " | Uhrzeit: " + app.getTime(), 10, 27, 11, "#ffffff", false);
@@ -448,7 +448,7 @@ public class PatientDashboardController {
         }
     }
 
-    // Hilfsmethode zum Erstellen von Labels
+
     private Label createLabel(String text, double x, double y, double fontSize, String colorHex, boolean bold) {
         Label label = new Label(text);
         label.setLayoutX(x);

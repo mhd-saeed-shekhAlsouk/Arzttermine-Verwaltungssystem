@@ -41,8 +41,6 @@ public class DoctorDashboardController {
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("d-MM-yyyy");
 
-    /* ===================== INITIALIZATION ===================== */
-
     @FXML
     public void initialize() {
         nameFilterField.textProperty().addListener((o, a, b) -> filterAppointments());
@@ -56,7 +54,6 @@ public class DoctorDashboardController {
         filterAppointments();
     }
 
-    /* ===================== DOCTOR PROFILE ===================== */
 
     private void loadDoctorProfile() {
         doctorNameLabel.setText("Dr. " + doctor.getFirstName() + " " + doctor.getLastName());
@@ -73,7 +70,6 @@ public class DoctorDashboardController {
         );
     }
 
-    /* ===================== APPOINTMENTS ===================== */
 
     private void filterAppointments() {
         List<Appointment> filtered = SingletonAppointmentSystem.getInstance()
@@ -206,14 +202,12 @@ public class DoctorDashboardController {
         });
     }
 
-    /* ===================== LOGOUT ===================== */
 
     @FXML
     private void handleLogoutClicked() {
         try {
             Parent root = FXMLLoader.load(
-                    AppointmentSystem.class.getResource(
-                            "/org.example.arzttermin/View/login.fxml"));
+                    AppointmentSystem.class.getResource("/org.example.arzttermin/View/login.fxml"));
             Stage stage = (Stage) rootPane.getScene().getWindow();
             stage.setScene(new Scene(root, 1920, 1024));
             stage.show();
@@ -221,8 +215,6 @@ public class DoctorDashboardController {
             e.printStackTrace();
         }
     }
-
-    /* ===================== UI HELPERS ===================== */
 
     private Label createLabel(String text, double x, double y, int size, String color, boolean bold) {
         Label label = new Label(text);
