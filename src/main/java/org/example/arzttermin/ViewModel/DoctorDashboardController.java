@@ -39,7 +39,7 @@ public class DoctorDashboardController {
     private User selectedPatient;
 
     private static final DateTimeFormatter FORMATTER =
-            DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DateTimeFormatter.ofPattern("d-MM-yyyy");
 
     /* ===================== INITIALIZATION ===================== */
 
@@ -57,11 +57,12 @@ public class DoctorDashboardController {
     }
 
     /* ===================== DOCTOR PROFILE ===================== */
+
     private void loadDoctorProfile() {
         doctorNameLabel.setText("Dr. " + doctor.getFirstName() + " " + doctor.getLastName());
         doctorEmailLabel.setText(doctor.getEmail());
         genderLabel.setText(doctor.getGender());
-        dobLabel.setText(new SimpleDateFormat("dd-MM-yyyy").format(doctor.getDob()));
+        dobLabel.setText(new SimpleDateFormat("MM-dd-yyyy").format(doctor.getDob()));
 
         int index = SingletonAppointmentSystem.getInstance()
                 .getUsers("Doctor").indexOf(doctor);
@@ -169,7 +170,7 @@ public class DoctorDashboardController {
                 createLabel("E-Mail: " + patient.getEmail(), 10, 65, 14, "#ffffff", false),
                 createLabel("Geschlecht: " + patient.getGender(), 10, 90, 14, "#ffffff", false),
                 createLabel("Geburtsdatum: " +
-                        new SimpleDateFormat("dd-MM-yyyy").format(patient.getDob()), 10, 115, 14, "#ffffff", false),
+                        new SimpleDateFormat("MM-dd-yyyy").format(patient.getDob()), 10, 115, 14, "#ffffff", false),
                 createLabel("Rolle: " + patient.getRole(), 10, 140, 14, "#ffffff", false)
         );
     }
@@ -214,7 +215,7 @@ public class DoctorDashboardController {
                     AppointmentSystem.class.getResource(
                             "/org.example.arzttermin/View/login.fxml"));
             Stage stage = (Stage) rootPane.getScene().getWindow();
-            stage.setScene(new Scene(root, 1500, 800));
+            stage.setScene(new Scene(root, 1920, 1024));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
