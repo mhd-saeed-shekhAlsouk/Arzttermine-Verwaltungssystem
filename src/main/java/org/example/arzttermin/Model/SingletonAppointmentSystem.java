@@ -47,7 +47,7 @@ public class SingletonAppointmentSystem {
 
     public void loadUsers() {
 //        users.add(new Admin());
-        System.out.println("Loading Data");
+        System.out.println("Daten werden geladen");
         db.loadPatients(users);
         db.loadDoctors(users);
         db.loadAppointments(users, appointments);
@@ -270,10 +270,9 @@ public class SingletonAppointmentSystem {
     public String bookAppointment(String doctor, String date, String time) {
 
         if (doctor == null || date == null || time == null) {
-            return "Error: Select All the Options";
+            return "Bitte wählen Sie alle Optionen aus.";
         }
 
-        // Finding Doctor
         User doc = null;
         for (User u : users) {
             if ((u.getFirstName() + ' ' + u.getLastName()).equals(doctor)) {
@@ -282,7 +281,6 @@ public class SingletonAppointmentSystem {
             }
         }
 
-        // Removing Slots of Availability for Dentist
         for (AvailabilityCalendar a : doc.getAvailablility()) {
             if (a.getDate().equals(date)) {
                 String tim = null;
@@ -320,7 +318,7 @@ public class SingletonAppointmentSystem {
 
     public String cancelAppointment(Appointment app) {
         if (app == null) {
-            return "Error: No appointment selected";
+            return "Fehler: Es wurde kein Termin ausgewählt.";
         }
 
         appointments.remove(app);
