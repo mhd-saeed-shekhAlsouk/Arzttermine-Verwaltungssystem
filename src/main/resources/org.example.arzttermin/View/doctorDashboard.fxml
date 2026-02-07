@@ -16,24 +16,26 @@
 
     <children>
 
-        <ImageView pickOnBounds="true" preserveRatio="false"
-                   fitWidth="${rootPane.width}"
-                   fitHeight="${rootPane.height}">
+        <ImageView fitHeight="${rootPane.height}" fitWidth="${rootPane.width}" pickOnBounds="true" preserveRatio="false">
             <image>
                 <Image url="@../images/baclgroung.png" />
             </image>
         </ImageView>
 
+
+        <!-- ✅ Center Container -->
         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
             <children>
 
+                <!-- ✅ ScrollPane transparent (damit Background sichtbar bleibt) -->
                 <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="AS_NEEDED" pannable="true" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;" vbarPolicy="AS_NEEDED">
 
                     <content>
                         <AnchorPane prefHeight="1024.0" prefWidth="1920.0" style="-fx-background-color: transparent;">
                             <children>
 
+                                <!-- LEFT PANEL -->
                                 <Pane layoutX="359.0" layoutY="212.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
                                     <children>
                                         <Label layoutX="10" layoutY="10" text="Arztprofil" textFill="#5e9f5a">
@@ -77,11 +79,14 @@
                                     </children>
                                 </Pane>
 
+                                <!-- MIDDLE PANEL -->
                                 <Pane layoutX="769.0" layoutY="212.0" prefHeight="600.0" prefWidth="383.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
                                     <children>
                                         <AnchorPane fx:id="patientInfoPane" layoutX="10.0" layoutY="13.0" prefHeight="600.0" prefWidth="400.0" />
                                     </children>
                                 </Pane>
+
+                                <!-- RIGHT PANEL -->
                                 <Pane layoutX="1161.0" layoutY="212.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #1A1D22; -fx-border-color: #5e9f5a; -fx-border-width: 5px; -fx-border-radius: 5;">
                                     <children>
                                         <Label layoutX="10" layoutY="10" text="Termine" textFill="#5e9f5a">
@@ -93,7 +98,7 @@
                                         </Label>
 
                                         <TextField fx:id="nameFilterField" layoutX="108.0" layoutY="47.0" prefHeight="25.0" prefWidth="125.0" promptText="Name" />
-                                        <DatePicker fx:id="dateFilterPicker" layoutX="246.0" layoutY="47.0" prefHeight="25.0" prefWidth="125.0" />
+                                        <DatePicker fx:id="dateFilterPicker" layoutX="246.0" layoutY="47.0" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: black;" />
 
                                         <ScrollPane fx:id="appointmentsScrollPane" hbarPolicy="NEVER" layoutX="10.0" layoutY="103.0" prefHeight="469.0" prefWidth="383.0" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
                                             <content>
@@ -103,6 +108,7 @@
                                     </children>
                                 </Pane>
 
+                                <!-- HEADER -->
                                 <ImageView fitHeight="94.0" fitWidth="87.0" layoutX="10.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../images/logo.png" />

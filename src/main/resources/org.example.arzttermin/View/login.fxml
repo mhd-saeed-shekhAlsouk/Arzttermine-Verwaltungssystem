@@ -11,97 +11,64 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane"
-            prefHeight="1024.0" prefWidth="1920.0"
-            xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.arzttermin.ViewModel.LoginController">
+<AnchorPane fx:id="rootPane" prefHeight="1024.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.arzttermin.ViewModel.LoginController">
 
     <children>
 
-        <ImageView pickOnBounds="true" preserveRatio="false"
-                   fitWidth="${rootPane.width}"
-                   fitHeight="${rootPane.height}">
+        <!-- ✅ Background Image (scales with window) -->
+        <ImageView fitHeight="${rootPane.height}" fitWidth="${rootPane.width}" pickOnBounds="true" preserveRatio="false">
             <image>
                 <Image url="@../images/baclgroung.png" />
             </image>
         </ImageView>
 
-        <StackPane AnchorPane.topAnchor="0.0"
-                   AnchorPane.bottomAnchor="0.0"
-                   AnchorPane.leftAnchor="0.0"
-                   AnchorPane.rightAnchor="0.0">
+        <!-- ✅ Center container: keeps login box centered -->
+        <StackPane layoutY="-14.0" prefWidth="1934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
             <children>
-                <Pane prefHeight="636.0" prefWidth="557.0"
-                      maxHeight="636.0" maxWidth="557.0"
-                      style="-fx-background-color: #1A1D22;
-                             -fx-border-color: #5E9F5A;
-                             -fx-border-width: 6px;
-                             -fx-border-radius: 5px;
-                             -fx-background-radius: 5px;">
+                <!-- Login Box -->
+                <Pane maxHeight="636.0" maxWidth="557.0" prefHeight="636.0" prefWidth="557.0" style="-fx-background-color: #1A1D22;                              -fx-border-color: #5E9F5A;                              -fx-border-width: 6px;                              -fx-border-radius: 5px;                              -fx-background-radius: 5px;">
 
                     <children>
                         <Label layoutX="199.0" layoutY="62.0" text="Anmeldung" textFill="WHITE">
                             <font>
-                                <Font name="Segoe UI Bold" size="29.0"/>
+                                <Font name="Segoe UI Bold" size="29.0" />
                             </font>
                         </Label>
 
                         <Label layoutX="138.0" layoutY="145.0" text="Benutzername" textFill="WHITE">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </Label>
 
                         <Label layoutX="135.0" layoutY="220.0" text="Passwort" textFill="WHITE">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </Label>
 
-                        <TextField fx:id="usernameField"
-                                   layoutX="137.0" layoutY="165.0"
-                                   prefHeight="25.0" prefWidth="284.0"
-                                   promptText="Benutzername"
-                                   style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;"/>
+                        <TextField fx:id="usernameField" layoutX="137.0" layoutY="165.0" prefHeight="25.0" prefWidth="284.0" promptText="Benutzername" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" />
 
-                        <PasswordField fx:id="passwordField"
-                                       layoutX="137.0" layoutY="240.0"
-                                       prefHeight="25.0" prefWidth="284.0"
-                                       promptText="passwort"
-                                       style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;"/>
+                        <PasswordField fx:id="passwordField" layoutX="137.0" layoutY="240.0" prefHeight="25.0" prefWidth="284.0" promptText="passwort" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" />
 
-                        <Label fx:id="errorLabel"
-                               layoutX="36.0" layoutY="292.0"
-                               text="Fehler" textFill="RED" visible="false"/>
+                        <Label fx:id="errorLabel" layoutX="36.0" layoutY="292.0" text="Fehler" textFill="RED" visible="false" />
 
-                        <Button layoutX="175.0" layoutY="331.0"
-                                mnemonicParsing="false"
-                                onAction="#loginButtonClicked"
-                                prefHeight="35.0" prefWidth="208.0"
-                                style="-fx-background-color: #5E9F5A; -fx-background-radius: 10px;"
-                                text="Anmelden" textFill="WHITE">
+                        <Button layoutX="175.0" layoutY="331.0" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="35.0" prefWidth="208.0" style="-fx-background-color: #5E9F5A; -fx-background-radius: 10px;" text="Anmelden" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="14.0"/>
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </Button>
 
-                        <Label layoutX="25.0" layoutY="437.0"
-                               text="Haben Sie noch kein Konto?" textFill="WHITE">
+                        <Label layoutX="25.0" layoutY="437.0" text="Haben Sie noch kein Konto?" textFill="WHITE">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </Label>
 
-                        <Button layoutX="204.0" layoutY="474.0"
-                                mnemonicParsing="false"
-                                onAction="#signUpButtonClicked"
-                                prefHeight="30.0" prefWidth="150.0"
-                                style="-fx-background-color: #5E9F5A; -fx-background-radius: 10px;"
-                                text="Registrieren" textFill="WHITE">
+                        <Button layoutX="204.0" layoutY="474.0" mnemonicParsing="false" onAction="#signUpButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #5E9F5A; -fx-background-radius: 10px;" text="Registrieren" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="14.0"/>
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </Button>
                     </children>
@@ -109,12 +76,10 @@
             </children>
         </StackPane>
 
-        <ImageView fitHeight="131.0" fitWidth="115.0"
-                   pickOnBounds="true" preserveRatio="true"
-                   AnchorPane.topAnchor="10.0"
-                   AnchorPane.rightAnchor="10.0">
+        <!-- ✅ Logo stays top-right -->
+        <ImageView fitHeight="131.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <image>
-                <Image url="@../images/logo.png"/>
+                <Image url="@../images/logo.png" />
             </image>
         </ImageView>
 
