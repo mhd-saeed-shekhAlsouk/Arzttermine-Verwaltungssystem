@@ -15,14 +15,12 @@
 
     <children>
 
-        <!-- ✅ Background Image (scales with window) -->
         <ImageView fitHeight="${rootPane.height}" fitWidth="${rootPane.width}" pickOnBounds="true" preserveRatio="false">
             <image>
                 <Image url="@../images/baclgroung.png" />
             </image>
         </ImageView>
 
-        <!-- ✅ Center container: keeps login box centered -->
         <StackPane layoutY="-14.0" prefWidth="1934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
             <children>
@@ -76,7 +74,6 @@
             </children>
         </StackPane>
 
-        <!-- ✅ Logo stays top-right -->
         <ImageView fitHeight="131.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <image>
                 <Image url="@../images/logo.png" />
