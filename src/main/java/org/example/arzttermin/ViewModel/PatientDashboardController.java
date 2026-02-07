@@ -280,7 +280,7 @@ public class PatientDashboardController {
                 timeComboBox.getValue()
         );
 
-        if (response.equals("Success")) {
+        if (response.equals("Erfolg")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Erfolg");
             alert.setHeaderText("Termin gebucht");

@@ -303,7 +303,7 @@ public class SingletonAppointmentSystem {
         db.addAppointment(app);
 
 
-        return "Success";
+        return "Erfolg";
     }
 
     public ArrayList<Appointment> getAppointments() {
