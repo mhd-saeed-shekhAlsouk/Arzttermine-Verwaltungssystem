@@ -86,6 +86,11 @@ public class SingletonAppointmentSystem {
         if (usernameExists(username)){
             return "Der Username existiert bereits.";
         }
+        // Existiert die E-Mail bereits?
+        if (emailExists(email)) {
+            return "Die E-Mail existiert bereits.";
+        }
+
 
         //Beide Passwort eingaben stimmen überein
         if (!password.equals(c_password)) {
@@ -103,6 +108,7 @@ public class SingletonAppointmentSystem {
         return "Account erfolgreich erstellt.";
     }
 
+
     private boolean usernameExists(String username){
         for (User user : users) {
             if (user.getUsername().equals(username)) {
@@ -111,6 +117,20 @@ public class SingletonAppointmentSystem {
         }
         return false;
     }
+    private boolean emailExists(String email) {
+        if (email == null)
+            return false;
+
+        String normalized = email.trim().toLowerCase();
+
+        for (User user : users) {
+            if (user.getEmail() != null && user.getEmail().trim().toLowerCase().equals(normalized)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 
