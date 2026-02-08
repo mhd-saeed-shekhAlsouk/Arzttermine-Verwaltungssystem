@@ -20,7 +20,7 @@ public class MySQL implements PersistanceHandler {
             throw new RuntimeException(e);
         }
 
-        System.out.println("Connecting to database...");
+        System.out.println("Verbindung zur Datenbank wird hergestellt...");
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
@@ -200,9 +200,9 @@ public class MySQL implements PersistanceHandler {
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Patient updated successfully.");
+                System.out.println("Patient erfolgreich aktualisiert.");
             } else {
-                System.out.println("No patient found with the given ID.");
+                System.out.println("Kein Patient mit der angegebenen ID gefunden.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -222,9 +222,9 @@ public class MySQL implements PersistanceHandler {
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Doctor updated successfully.");
+                System.out.println("Arzt erfolgreich aktualisiert.");
             } else {
-                System.out.println("No doctor found with the given ID.");
+                System.out.println("Kein Arzt mit der angegebenen ID gefunden.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -240,9 +240,9 @@ public class MySQL implements PersistanceHandler {
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Appointment deleted successfully.");
+                System.out.println("Termin erfolgreich gelöscht.");
             } else {
-                System.out.println("No appointment found with the given ID.");
+                System.out.println("Kein Termin mit der angegebenen ID gefunden.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
